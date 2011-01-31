@@ -1,0 +1,109 @@
+Template: mcollective/connector
+Type: select
+Default: stomp
+Choices: stomp
+Description: Connector:
+ Which connector plugin to use for communication
+
+Template: mcollective/plugin_stomp_host
+Type: string
+Default: stomp.example.com
+Description: Stomp host:
+ Stomp host to connect to
+
+Template: mcollective/plugin_stomp_port
+Type: string
+Default: 6163
+Description: Stomp port:
+ Port to connecto to
+
+Template: mcollective/plugin_stomp_user
+Type: string
+Default: mcollective
+Description: Stomp username:
+ User to connect as
+
+Template: mcollective/plugin_stomp_password
+Type: string
+Default: marionette
+Description: Stomp password:
+ Password to use
+
+Template: mcollective/securityprovider
+Type: select
+Default: psk
+Choices: psk, ssl, aes
+Description: Security Provider:
+ Which security model to use. SSL and AES will require additional post-install configuration.
+
+Template: mcollective/plugin_psk
+Type: string
+Default: marionette
+Description: Pre-Shared Key:
+ The pre-shared key to use for the Psk security provider
+
+Template: mcollective/plugin_psk_callertype
+Type: select
+Choices: plugin, uid, gid, user, group, identity
+Default: group
+Description: Pre-Shared Key Caller Type:
+ What to base the callerid on for the PSK
+
+Template: mcollective/logger_type
+Type: select
+Default: syslog
+Choices: file, syslog, console
+Description: Logger Type:
+
+Template: mcollective/logfile
+Type: string
+Default: /var/log/mcollective.log
+Description: Log File:
+
+Template: mcollective/keeplogs
+Type: string
+Default: 5
+Description: Keep Logs:
+ The amount of logs to keep
+
+Template: mcollective/max_log_size
+Type: string
+Default: 2097152
+Description: Max Log Size:
+ Max size in bytes for log files before rotation happens
+
+Template: mcollective/loglevel
+Type: select
+Default: warn
+Choices: info, warn, debug, fatal, error
+Description: Log Level:
+
+Template: mcollective/factsource
+Type: select
+Default: yaml
+Choices: yaml
+Description: Fact Source:
+ Which fact plugin to use
+
+Template: mcollective/plugin_yaml
+Type: string
+Default: /etc/mcollective/facts.yaml
+Description: YAML Fact Source:
+ Where the yaml fact source finds facts from, multiples get merged. Seperate each with a :
+
+Template: mcollective/fact_cache_time
+Type: string
+Default: 300
+Description: Fact Cache Time:
+ How long to cache fact results for before refreshing from source
+
+Template: mcollective/classesfile
+Type: string
+Default: /var/lib/puppet/classes.txt
+Description: Classes File:
+ Where to find a list of classes configured by your configuration management system
+
+Template: mcollective/identity
+Type: string
+Description: Identity:
+ Identifier for this node, does not need to be unique, defaults to hostname if unset. Typical values include this servers FQDN.

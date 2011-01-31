@@ -8,14 +8,14 @@ Homepage: http://marionette-collective.org/
 
 Package: mcollective
 Architecture: all
-Depends: ruby (>= 1.8.1), mcollective-common (>= ${source:Version})
+Depends: debconf, ruby (>= 1.8.1), libstomp-ruby, mcollective-common (>= ${source:Version})
 Description: build server orchestration or parallel job execution systems
  The Marionette Collective aka. mcollective is a framework 
  to build server orchestration or parallel job execution systems.
 
 Package: mcollective-client
 Architecture: all
-Depends: ruby (>= 1.8.1), mcollective-common (>= ${source:Version})
+Depends: debconf, ruby (>= 1.8.1), libstomp-ruby, mcollective-common (>= ${source:Version})
 Description: build server orchestration or parallel job execution systems
  The Marionette Collective aka. mcollective is a framework 
  to build server orchestration or parallel job execution system
