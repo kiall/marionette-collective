@@ -140,7 +140,6 @@ task :deb => [:clean, :doc, :package] do
                     else
                             safe_system %{debuild -i -b}
                     end
-                safe_system %{debuild -i -b}
             else
                 safe_system %{debuild -i -us -uc -b}
             end
