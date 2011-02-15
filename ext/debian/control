@@ -2,27 +2,27 @@ Source: mcollective
 Section: utils
 Priority: extra
 Maintainer: Riccardo Setti <giskard@debian.org>
-Build-Depends: debhelper (>= 7), dpatch, cdbs
-Standards-Version: 3.8.0
+Build-Depends: debhelper (>= 7), cdbs, quilt, patchutils
+Standards-Version: 3.8.4
 Homepage: http://marionette-collective.org/
 
 Package: mcollective
 Architecture: all
-Depends: ruby (>= 1.8.1), mcollective-common (>= ${source:Version})
+Depends: ${misc:Depends}, ruby (>= 1.8.1), mcollective-common (>= ${source:Version})
 Description: build server orchestration or parallel job execution systems
  The Marionette Collective aka. mcollective is a framework 
  to build server orchestration or parallel job execution systems.
 
 Package: mcollective-client
 Architecture: all
-Depends: ruby (>= 1.8.1), mcollective-common (>= ${source:Version})
+Depends: ${misc:Depends}, ruby (>= 1.8.1), mcollective-common (>= ${source:Version})
 Description: build server orchestration or parallel job execution systems
  The Marionette Collective aka. mcollective is a framework 
  to build server orchestration or parallel job execution system
 
 Package: mcollective-common
 Architecture: all
-Depends: ruby (>= 1.8.1) , rubygems
+Depends: ${misc:Depends}, ruby (>= 1.8.1), rubygems
 Description: build server orchestration or parallel job execution systems
  The Marionette Collective aka. mcollective is a framework 
  to build server orchestration or parallel job execution systems.
@@ -31,6 +31,7 @@ Description: build server orchestration or parallel job execution systems
 
 Package: mcollective-doc
 Architecture: all
+Depends: ${misc:Depends}
 Section: doc
 Description: Documentation for mcollective
  The Marionette Collective aka. mcollective is a framework 
