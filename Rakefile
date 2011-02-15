@@ -15,6 +15,7 @@ PROJ_FILES.concat(Dir.glob("mc-*"))
 
 ENV["RPM_VERSION"] ? CURRENT_VERSION = ENV["RPM_VERSION"] : CURRENT_VERSION = PROJ_VERSION
 ENV["BUILD_NUMBER"] ? CURRENT_RELEASE = ENV["BUILD_NUMBER"] : CURRENT_RELEASE = PROJ_RELEASE
+ENV["DEB_DISTRIBUTION"] ? PKG_DEB_DISTRIBUTION = ENV["DEB_DISTRIBUTION"] : PKG_DEB_DISTRIBUTION = "unstable"
 
 CLEAN.include(["build", "doc"])
 
@@ -124,7 +125,7 @@ task :deb => [:clean, :doc, :package] do
             safe_system %{cp -R ext/Makefile .}
 
             File.open("debian/changelog", "w") do |f|
-                f.puts("mcollective (#{CURRENT_VERSION}-#{CURRENT_RELEASE}) unstable; urgency=low")
+                f.puts("mcollective (#{CURRENT_VERSION}-#{CURRENT_RELEASE}) #{PKG_DEB_DISTRIBUTION}; urgency=low")
                 f.puts
                 f.puts("  * Automated release for #{CURRENT_VERSION}-#{CURRENT_RELEASE} by rake deb")
                 f.puts
@@ -134,6 +135,11 @@ task :deb => [:clean, :doc, :package] do
             end
 
             if ENV['SIGNED'] == '1'
+                    if ENV['SIGNWITH']
+                            safe_system %{debuild -i -b -k#{ENV['SIGNWITH']}}
+                    else
+                            safe_system %{debuild -i -b}
+                    end
                 safe_system %{debuild -i -b}
             else
                 safe_system %{debuild -i -us -uc -b}
